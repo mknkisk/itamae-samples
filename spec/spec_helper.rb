@@ -20,7 +20,7 @@ host = ENV['TARGET_HOST']
 `vagrant up #{host}`
 
 config = Tempfile.new('', Dir.tmpdir)
-config.write(`vagrant ssh-config #{host}`)
+config.write(`vagrant ssh-config --host #{host}`)
 config.close
 
 options = Net::SSH::Config.for(host, [config.path])
